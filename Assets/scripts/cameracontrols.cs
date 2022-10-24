@@ -43,6 +43,28 @@ public class cameracontrols : MonoBehaviour
             rotation = -2f;
         }
 
+        int scrollArea = 20; //px
+
+        if (Input.mousePosition.x <= scrollArea)
+        {
+            cameraMoveDir.x = -1f;
+        }
+
+        if (Input.mousePosition.y <= scrollArea)
+        {
+            cameraMoveDir.z = -1f;
+        }
+
+        if (Input.mousePosition.x >= Screen.width - scrollArea)
+        {
+            cameraMoveDir.x = +1f;
+        }
+
+        if (Input.mousePosition.y >= Screen.height - scrollArea)
+        {
+            cameraMoveDir.z = +1f;
+        }
+
         Vector3 moveWithRotation = transform.forward * cameraMoveDir.z + transform.right * cameraMoveDir.x; //Take global directions into account to (possibly) allow for rotation)
 
         float movespeed = 30f;//Slow enough to cut down on lurch
